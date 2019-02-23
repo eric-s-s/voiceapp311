@@ -1,5 +1,5 @@
 import unittest
-from typing import Optional
+from typing import Optional, List
 
 from mycity.test.test_our_stuff.test_distance import Mile, Distance, Kilometer
 from mycity.test.test_our_stuff.test_long_lat import LongLatPoint
@@ -54,7 +54,7 @@ class ArcGisParams(object):
             raise ValueError(f"No esri units for type: {distance.__class__}")
         return unit
 
-    def add_specific_outfields(self, out_fields):
+    def add_specific_outfields(self, out_fields: List[str]):
         out_fields_details = {
             "outFields": ",".join(out_fields)
         }
@@ -64,7 +64,7 @@ class ArcGisParams(object):
         updated_outfields = {"outFields": "*"}
         return self._get_updated_params(updated_outfields)
 
-    def add_where(self, where_str):
+    def add_where(self, where_str: str):
         updated_where_str = {"where": where_str}
         return self._get_updated_params(updated_where_str)
 
@@ -74,7 +74,7 @@ class ArcGisParams(object):
         return ArcGisParams(to_update)
 
 
-class TestParams(unittest.TestCase):
+class TestArcGISParams(unittest.TestCase):
 
     def test_init_default_params(self):
         expected_params = {
