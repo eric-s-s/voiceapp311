@@ -22,9 +22,11 @@ params = {
     "f": "json",
     "geometry": str(trader_joe_lon_lat['x']) + "," + str(trader_joe_lon_lat['y']),
     "geometryType": "esriGeometryPoint",
-    "returnGeometry": "false",
+    "returnGeometry": "true",
     "inSR": "{}".format(LAT_LONG_SPATIAL_REFERENCE),
-    "outFields": "*",
+    "outSR": LAT_LONG_SPATIAL_REFERENCE,
+    "where": "1=1",
+    "outFields": "Lat,Lon",
     "distance": "0.001",
     "units": KM_UNIT
 }
